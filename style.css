@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cairo;
+}
+
+.overlay {
+  background-color: rgba(50, 50, 162, 0.43);
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay button {
+  background-color: rgb(209, 136, 0);
+  color: white;
+  padding: 10px 25px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.game {
+  width: 1000px;
+  margin: 20px auto 0;
+}
+
+.game .info {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #2196f3;
+  padding: 5px 15px;
+  font-size: 20px;
+  background-color: #f6f6f6;
+}
+
+.game .game-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 20px;
+}
+
+.game .game-blocks .block {
+  width: calc((100% - 40px) / 5);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transition: transform .3s;
+  border: 5px solid #2196f3;
+}
+
+.game .game-blocks .block.match {
+  pointer-events: none;
+}
+
+.game .game-blocks .block .front {
+  background-color: #333;
+  color: white;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 200px;
+}
+
+.game .game-blocks .block .front::before {
+  content: "?";
+}
+
+.game .game-blocks .block .back {
+  background-color: #607D88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.game .game-blocks .block.match .back::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #00000081;
+}
+
+.game .game-blocks .block .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.game .game-blocks .block.flipped {
+  transform: rotateY(180deg);
+}
+
+
+.game .game-blocks .block .back img {
+  width: 140px;
+}
+
+video {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 16/9;
+}
+
+.controls {
+  text-align: right;
+}
+
+.controls button {
+  background-color: #2196f3;
+  color: white;
+  padding-block: 10px;
+  width: 190px;
+  display: inline-block;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.event-none {
+  pointer-events: none;
+}
